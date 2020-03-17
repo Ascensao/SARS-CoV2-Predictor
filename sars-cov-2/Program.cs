@@ -192,18 +192,40 @@ namespace sars_cov_2
 
             //Trend Calculation
             double calc_trend = 0;
-            if(Globals.spread_phases == 'g')
-                calc_trend = (double)(avg_last3_percentage - ((avg_last5_percentage - avg_last3_percentage )/ 2.5));
+            if (Globals.spread_phases == 'g')
+                calc_trend = (double)(avg_last3_percentage - ((avg_last5_percentage - avg_last3_percentage) / 2.5));
             else if (Globals.spread_phases == 'r')
                 calc_trend = (double)(avg_last3_percentage + ((avg_last5_percentage - avg_last3_percentage) / 2.5));
             else
-                calc_trend = (double)(avg_last10_percentage + avg_last5_percentage + avg_last3_percentage) / 3;
+            {
+                //TREND Doubt Calcs
+                //get last 3 days 
+                double[] covid_last3 = new double[3];
+                covid_last3[0] = covid_percentage[covid_percentage.Count - 3];
+                covid_last3[1] = covid_percentage[covid_percentage.Count - 2];
+                covid_last3[2] = covid_percentage[covid_percentage.Count - 1];
+
+                //Deceleration trend (country Mitigation Protocols Active)
+                if (covid_last3[0]>covid_last3[1] && covid_last3[1] > covid_last3[2])
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nChance of Mitigation Protocols in Force");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    double decrease_rate_perc = (double)100-((covid_last3[2]* 100) / covid_last3[0]);
+                    double avg_decrease_rate_perc = (double)(decrease_rate_perc / 3)/2;
+                    calc_trend = (double)covid_percentage[covid_percentage.Count - 1] - avg_decrease_rate_perc;
+                }
+                else
+                {
+                    calc_trend = (double)(avg_last10_percentage + avg_last5_percentage + avg_last3_percentage) / 3;
+                }         
+            }
 
             double prediction_per = calc_trend;
             List<int> next_days_values = new List<int>();
 
             string ask = string.Empty;
-            Console.WriteLine("\nThe next prediction will be made with the rate of + " + Math.Round(prediction_per, 1).ToString() + " %\n");
+            Console.WriteLine("The next prediction will be made with the rate of + " + Math.Round(prediction_per, 1).ToString() + " %\n");
             Console.WriteLine("Do you like use another incremental percentage rate ? y/n");
             ask = Console.ReadLine();
             if (ask == "y" || ask == "yes")

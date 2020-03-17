@@ -3,4 +3,3 @@ C:\Users\basce\source\repos\sars-cov-2\sars-cov-2\bin\Debug\sars-cov-2.exe
 C:\Users\basce\source\repos\sars-cov-2\sars-cov-2\bin\Debug\sars-cov-2.pdb
 C:\Users\basce\source\repos\sars-cov-2\sars-cov-2\obj\Debug\sars-cov-2.exe
 C:\Users\basce\source\repos\sars-cov-2\sars-cov-2\obj\Debug\sars-cov-2.pdb
-C:\Users\basce\source\repos\sars-cov-2\sars-cov-2\obj\Debug\sars-cov-2.csprojAssemblyReference.cache

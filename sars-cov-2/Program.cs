@@ -70,7 +70,7 @@ namespace sars_cov_2
             //if country txt file don't have more then 10 regists then close app
             if (covid_percentage.Count < 10)
             {
-                Console.WriteLine("The Program only can work properly if the text file have 10 or more records. Please press any key to exit.");
+                Console.WriteLine("The Program only can work properly if the text file have more then 10 records. Please press any key to exit.");
                 Console.ReadKey();
                 Environment.Exit(0);
             }
@@ -141,7 +141,7 @@ namespace sars_cov_2
             {
                 Globals.spread_phases = 'r';
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("The pandemic situation is getting bigger !!!"); //The percentage is increasing between (3-5-10 days)
+                Console.WriteLine("The Pandemic situation is getting bigger !!!"); //The percentage is increasing between (3-5-10 days)
             }
             else
             {

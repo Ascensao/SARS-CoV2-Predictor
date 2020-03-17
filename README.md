@@ -22,10 +22,11 @@ The SARS-CoV-2 is a .NET Console Application and also the name of the actual inf
 <img src="https://github.com/Ascensao/sars-cov-2/blob/master/printscreen3.png">
 
 **2. What mean the following sentences ?**
-* "The Pandemic situation is coming to an end!": This means the average percentage of new cases in the last 10 days is coming down. In other words, the Covid-19 in the selected location it is in the "Pandemic Management Stage" or "Demobilization Stage".
-* "The Pandemic situation is unstable !": Means the average percentage of new cases is oscillating between Highs and Lows. In other words, the Covid-19 in the selected location it is in the "Containment Stage" or "Comunity Mitigation Stage"..
-* "The pandemic situation is getting bigger !!!" This means the average percentage of the new case is increasing. In other words, the Covid-19 in the selected location it is in the "Comunity Mitigation Stage".
+* "The Pandemic situation is coming to an end!": This means the average percentage of new cases in the last 10 days is coming down. In other words, the Covid-19 in the selected location it is in the "Deceleration Phase". (Pandemic Management or Demobilization)
+* "The Pandemic situation is unstable !": Means the average percentage of new cases is oscillating between Highs and Lows. In other words, the Covid-19 in the selected location it is in the "Initiation Phase" or "Acceleration Phase". (Containment or Community Mitigation)
+* "The pandemic situation is getting bigger !!!" This means the average percentage of the new case is increasing. In other words, the Covid-19 in the selected location it is in the "Acceleration Phase". (Containment or Community Mitigation)
 
+<img width="680" src="https://github.com/Ascensao/sars-cov-2/blob/master/pandemic-stages.png">
 <img width="680" src="https://github.com/Ascensao/sars-cov-2/blob/master/covid-19-stages.jpg">
 
 **3. Statistical Analyses ?**

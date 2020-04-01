@@ -215,9 +215,28 @@ namespace sars_cov_2
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("\nChance of Mitigation Protocols in Force");
                         Console.ForegroundColor = ConsoleColor.White;
-                        double decrease_rate_perc = (double)100 - ((covid_last3[2] * 100) / covid_last3[0]);
-                        double avg_decrease_rate_perc = (double)(decrease_rate_perc / 3) / 2;
-                        calc_trend = (double)covid_percentage[covid_percentage.Count - 1] - avg_decrease_rate_perc;
+
+                        if(covid_last3[2] > 5)
+                            calc_trend = (double)covid_last3[2] - 1;
+                        else
+                        {
+                            if ((covid_last3[1] < 5) && (covid_last3[0] < 5)) //se ultimos 3 dias são inferiores a 5%
+                            {
+                                double new_val1 = (double)Math.Abs(covid_last3[0] - covid_last3[1]);
+                                double new_val2 = (double)Math.Abs(covid_last3[1] - covid_last3[2]);
+                                double new_med = (double)((new_val1 + new_val2) / 2);
+                                calc_trend = (double)covid_last3[2] - new_med;
+                            }
+                            else if (covid_last3[1] >= 5)
+                            {
+                                calc_trend = (double)covid_last3[1] - 1;
+                            }
+                            else
+                            {
+                                double new_val1 = (double)Math.Abs(covid_last3[2] - covid_last3[1]);
+                                calc_trend = (double)covid_last3[2] - new_val1;
+                            }
+                        }
                     }
                     else
                     {
@@ -285,7 +304,7 @@ namespace sars_cov_2
             Console.WriteLine("\n\n");
             Console.WriteLine(@"   _____           _____    _____          _____    __      __     ___ ");
             Console.WriteLine(@"  / ____|   /\    |  __ \  / ____|        / ____|   \ \    / /    |__ \     Cumulative Stats & Predictions");
-            Console.WriteLine(@" | (___    /  \   | |__) || (___  ______ | |      ___\ \  / /______  ) |    V.1.0");
+            Console.WriteLine(@" | (___    /  \   | |__) || (___  ______ | |      ___\ \  / /______  ) |    V.1.2");
             Console.WriteLine(@"  \___ \  / /\ \  |  _  /  \___ \|______|| |     / _ \\ \/ /|______|/ / ");
             Console.WriteLine(@"  ____) |/ ____ \ | | \ \  ____) |       | |____| (_) |\  /        / /_ ");
             Console.WriteLine(@" |_____//_/    \_\|_|  \_\|_____/         \_____|\___/  \/        |____|    By Ascensao");

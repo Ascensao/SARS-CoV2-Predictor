@@ -164,7 +164,7 @@ namespace sars_cov_2
 
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("\n\n■ Next Days Predictions ■\n");
-                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("Tomorrow: ");
                 Console.ForegroundColor = ConsoleColor.White;
 
@@ -251,7 +251,7 @@ namespace sars_cov_2
                 List<int> next_days_values = new List<int>();
 
                 string ask = string.Empty;
-                Console.WriteLine("The next prediction will be made with the rate of + " + Math.Round(prediction_percentage, 1).ToString() + " %\n");
+                Console.WriteLine("\nThe next prediction will be made with the rate of + " + Math.Round(prediction_percentage, 1).ToString() + " %\n");
                 Console.WriteLine("Do you like use another incremental percentage rate ? y/n");
                 ask = Console.ReadLine();
                 if (ask == "y" || ask == "yes")
@@ -260,6 +260,10 @@ namespace sars_cov_2
                     if (!double.TryParse(Console.ReadLine(), out prediction_percentage))
                         Console.WriteLine("Number Invalid! The math will be made with the " + prediction_percentage.ToString() + "% rate.");
                 }
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\n" + Path.GetFileNameWithoutExtension(Globals.countries[Globals.c_selected]));
+                Console.ForegroundColor = ConsoleColor.White;
 
                 #region NEXT_DAYS_PREDICTIONS
                 //tomorrow prediction

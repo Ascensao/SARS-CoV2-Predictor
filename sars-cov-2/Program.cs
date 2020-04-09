@@ -88,11 +88,15 @@ namespace sars_cov_2
                 {
                     if (i == 0) //first value don't have percentage
                         Console.WriteLine(string.Format(" {0,-10}{1}", covid_stats[i].ToString(), "-"));
-                    else if (covid_percentage[i - 1] < 5) //if incremental percentage is less then 5 then show 2 decimal points.
+                    else if (covid_percentage[i - 1] < 5)//if incremental percentage is less then 5 then show 2 decimal points.
+                    { 
                         Console.WriteLine(string.Format(" {0,-10}+ {1}%", covid_stats[i].ToString(), covid_percentage[i - 1].ToString("0.00")));
+                        //File.AppendAllText(@"teste.txt", covid_percentage[i - 1].ToString("0.00") + Environment.NewLine);
+                    }
                     else
                     {
                         Console.WriteLine(string.Format(" {0,-10}+ {1}%", covid_stats[i].ToString(), covid_percentage[i - 1].ToString("0")));
+                        //File.AppendAllText(@"teste.txt", covid_percentage[i - 1].ToString("0") + Environment.NewLine);
                     }
                 }
 
@@ -113,7 +117,7 @@ namespace sars_cov_2
                     last_10_percentages.Add(covid_percentage[i]);
 
                 double avg_last10_percentage = Math.Round(last_10_percentages.Sum() / last_10_percentages.Count, 1);
-                Console.WriteLine("AVG last 10 days:  " + avg_last10_percentage.ToString() + " %");
+                Console.WriteLine(" AVG last 10 days:  " + avg_last10_percentage.ToString() + " %");
 
                 //get average from last 5 elements
                 List<double> last_5_percentages = new List<double>();
@@ -121,7 +125,7 @@ namespace sars_cov_2
                     last_5_percentages.Add(covid_percentage[i]);
 
                 double avg_last5_percentage = Math.Round(last_5_percentages.Sum() / last_5_percentages.Count, 1);
-                Console.WriteLine("AVG last  5 days:  " + avg_last5_percentage.ToString() + " %");
+                Console.WriteLine(" AVG last  5 days:  " + avg_last5_percentage.ToString() + " %");
 
                 //get average from last 3 elements
                 List<double> last_3_percentages = new List<double>();
@@ -129,7 +133,7 @@ namespace sars_cov_2
                     last_3_percentages.Add(covid_percentage[i]);
 
                 double avg_last3_percentage = Math.Round(last_3_percentages.Sum() / last_3_percentages.Count, 1);
-                Console.WriteLine("AVG last  3 days:  " + avg_last3_percentage.ToString() + " %\n");
+                Console.WriteLine(" AVG last  3 days:  " + avg_last3_percentage.ToString() + " %\n");
 
                 #endregion Average
 
@@ -139,25 +143,24 @@ namespace sars_cov_2
                 {
                     Globals.spread_phases = 'g';
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("The Pandemic situation is coming to an end!"); //The percentage is decreasing between (3-5-10 days)
+                    Console.WriteLine(" The Pandemic situation is coming to an end, out of exponential curve or exponential curve decelerating !"); //The percentage is decreasing between (3-5-10 days)
                 }
                 else if ((avg_last10_percentage < avg_last5_percentage) && (avg_last5_percentage < avg_last3_percentage))
                 {
                     Globals.spread_phases = 'r';
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("The Pandemic situation is getting bigger !!!"); //The percentage is increasing between (3-5-10 days)
+                    Console.WriteLine(" The Pandemic situation is getting bigger, the exponential growth is accelerating !!!"); //The percentage is increasing between (3-5-10 days)
                 }
                 else
                 {
                     Globals.spread_phases = 'y';
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("The Pandemic situation is unstable !"); //Hights and Lows between the 3 avereges percentages (3-5-10 days)
+                    Console.WriteLine(" The Pandemic situation is unstable, through exponential growth !!"); //Hights and Lows between the 3 avereges percentages (3-5-10 days)
                 }
                 Console.ForegroundColor = ConsoleColor.White;
 
 
-                //SARS-CoV-2 Predictions
-                #region Predictions
+                //SARS-CoV-2
 
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("\n\n■ Next Days Predictions ■\n");
@@ -173,17 +176,17 @@ namespace sars_cov_2
                 //prediction with last 10 days percentage AVG
                 double prediction_with_day_10 = covid_stats[covid_stats.Length - 1] +
                     Math.Round((covid_stats[covid_stats.Length - 1] * avg_last10_percentage) / 100, 0);
-                Console.WriteLine("AVG 10: " + prediction_with_day_10.ToString() + " infected." +
+                Console.WriteLine(" AVG 10: " + prediction_with_day_10.ToString() + " infected." +
                     " (+" + (prediction_with_day_10 - covid_stats[covid_stats.Length - 1]).ToString() + ")");
                 //prediction with last 5 days percentage AVG
                 double prediction_with_day_5 = covid_stats[covid_stats.Length - 1] +
                     Math.Round((covid_stats[covid_stats.Length - 1] * avg_last5_percentage) / 100, 0);
-                Console.WriteLine("AVG  5: " + prediction_with_day_5.ToString() + " infected." +
+                Console.WriteLine(" AVG  5: " + prediction_with_day_5.ToString() + " infected." +
                     " (+" + (prediction_with_day_5 - covid_stats[covid_stats.Length - 1]).ToString() + ")");
                 //prediction with last 3 days percentage AVG
                 double prediction_with_day_3 = covid_stats[covid_stats.Length - 1] +
                     Math.Round((covid_stats[covid_stats.Length - 1] * avg_last3_percentage) / 100, 0);
-                Console.WriteLine("AVG  3: " + prediction_with_day_3.ToString() + " infected." +
+                Console.WriteLine(" AVG  3: " + prediction_with_day_3.ToString() + " infected." +
                     " (+" + (prediction_with_day_3 - covid_stats[covid_stats.Length - 1]).ToString() + ")");
 
                 int days = 0;
@@ -244,50 +247,48 @@ namespace sars_cov_2
                     }
                 }
 
-                double prediction_per = calc_trend;
+                double prediction_percentage = calc_trend;
                 List<int> next_days_values = new List<int>();
 
                 string ask = string.Empty;
-                Console.WriteLine("The next prediction will be made with the rate of + " + Math.Round(prediction_per, 1).ToString() + " %\n");
+                Console.WriteLine("The next prediction will be made with the rate of + " + Math.Round(prediction_percentage, 1).ToString() + " %\n");
                 Console.WriteLine("Do you like use another incremental percentage rate ? y/n");
                 ask = Console.ReadLine();
                 if (ask == "y" || ask == "yes")
                 {
                     Console.Write("Please introduce new percentage %: ");
-                    if (!double.TryParse(Console.ReadLine(), out prediction_per))
-                    {
-                        Console.WriteLine("Number Invalid!");
-                        Environment.Exit(0);
-                    }
+                    if (!double.TryParse(Console.ReadLine(), out prediction_percentage))
+                        Console.WriteLine("Number Invalid! The math will be made with the " + prediction_percentage.ToString() + "% rate.");
                 }
 
-                for (int i = 0; i < days; i++)
+                #region NEXT_DAYS_PREDICTIONS
+                //tomorrow prediction
+                var new_value = ((covid_stats[covid_stats.Length - 1] * prediction_percentage) / 100);
+                next_days_values.Add(covid_stats[covid_stats.Length - 1] + (int)Math.Round(new_value, 0));
+                
+                //days after tomorrow
+                for (int i = 1; i < days; i++)
                 {
-                    if (i > 0)
-                    {
-                        var new_value = (next_days_values.Sum() * prediction_per) / 100;
-                        next_days_values.Add(Convert.ToInt32(Math.Round(next_days_values[next_days_values.Count - 1] + new_value, 0)));
-                    }
-                    else
-                    {
-                        var new_value = ((covid_stats[covid_stats.Length - 1] * prediction_per) / 100);
-                        next_days_values.Add(covid_stats[covid_stats.Length - 1] + Convert.ToInt32(Math.Round(new_value, 0))); ;
-                    }
+                    if(Globals.spread_phases == 'g' || Globals.spread_phases == 'y')
+                        prediction_percentage = prediction_percentage - Default_Decrease_Rate(prediction_percentage);
+                    new_value = (next_days_values[next_days_values.Count - 1] * (prediction_percentage)) / 100;
+                    next_days_values.Add(Convert.ToInt32(Math.Round(next_days_values[next_days_values.Count - 1] + new_value, 0)));
                 }
-
+                
+                //showing next days
                 int days_counter = 0;
-                foreach (int x in next_days_values)
+                foreach (int val in next_days_values)
                 {
                     days_counter++;
-                    if (days_counter == 1)
-                        Console.WriteLine("Tomorrow: " + x.ToString() + " infected.");
-                    else
+                    if (days_counter == 1) //if tomorrow
+                        Console.WriteLine("Tomorrow: " + val.ToString() + " infected.");
+                    else 
                     {
-                        Console.WriteLine(" +" + days_counter.ToString() + " days: " + x.ToString() + " infected." +
-                    " (+" + (x - next_days_values[days_counter - 2]).ToString() + " new cases)");
+                        Console.WriteLine(" +" + days_counter.ToString() + " days: " + val.ToString() + " infected." +
+                    " (+" + (val - next_days_values[days_counter-2]).ToString() + " new cases)");
                     }
                 }
-                #endregion Predictions
+                #endregion# NEXT_DAYS_PREDICTIONS
 
                 Console.WriteLine("\n\nDo you like continue ? Enter = yes or write \"exit\"");
                 if (Console.ReadLine() == "exit")
@@ -296,6 +297,30 @@ namespace sars_cov_2
                     Console.Clear();
 
             } while (Globals.app_running);
+        }
+
+        static double Default_Decrease_Rate(double avg)
+        {
+            double _percentage = 4;
+
+            if (avg >= 40)
+                _percentage = 2;
+            else if (avg >= 30)
+                _percentage = 1.66;
+            else if (avg >= 20)
+                _percentage = 1;
+            else if (avg >= 10)
+                _percentage = 1;
+            else if (avg >= 5)
+                _percentage = 0.83;
+            else if (avg >= 2)
+                _percentage = 0.43;
+            else if (avg >= 1)
+                _percentage = 0.08;
+            else if (avg >= 0.5)
+                _percentage = 0.04;
+
+            return _percentage;
         }
 
         static void MenuLogo()

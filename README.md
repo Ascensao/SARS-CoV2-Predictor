@@ -17,7 +17,7 @@ The SARS-CoV-2 is a .NET Console Application and also the name of the actual inf
 
 ## FAQ
 **1. Where is located the .txt files ?**
-* Folder "Country" in .exe root directory.
+* Folder "Countries" in .exe root directory.
 <img src="https://github.com/Ascensao/sars-cov-2/blob/master/printscreen2.png">
 <img src="https://github.com/Ascensao/sars-cov-2/blob/master/printscreen3.png">
 

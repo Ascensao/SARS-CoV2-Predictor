@@ -168,10 +168,6 @@ namespace sars_cov_2
                 Console.WriteLine("Tomorrow: ");
                 Console.ForegroundColor = ConsoleColor.White;
 
-                /*prediction with all medians (low accurate)
-                double prediction_with_day_all = covid_stats[covid_stats.Length - 1] +
-                    Math.Round((covid_stats[covid_stats.Length - 1] * median_all_percentages)/100,0);
-                Console.WriteLine("AVG All: " + prediction_with_day_all.ToString());*/
 
                 //prediction with last 10 days percentage AVG
                 double prediction_with_day_10 = covid_stats[covid_stats.Length - 1] +

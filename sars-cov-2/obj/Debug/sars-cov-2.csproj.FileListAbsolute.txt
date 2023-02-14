@@ -5,3 +5,11 @@ C:\Users\basce\source\repos\sars-cov-2\sars-cov-2\obj\Debug\sars-cov-2.exe
 C:\Users\basce\source\repos\sars-cov-2\sars-cov-2\obj\Debug\sars-cov-2.pdb
 C:\Users\basce\source\repos\sars-cov-2\sars-cov-2\obj\Debug\sars-cov-2.csprojAssemblyReference.cache
 C:\Users\basce\source\repos\sars-cov-2\sars-cov-2\obj\Debug\sars-cov-2.csproj.CoreCompileInputs.cache
+C:\Users\Ascensao\Source\Repos\sars-cov-2\sars-cov-2\bin\Debug\sars-cov-2.exe.config
+C:\Users\Ascensao\Source\Repos\sars-cov-2\sars-cov-2\bin\Debug\sars-cov-2.exe
+C:\Users\Ascensao\Source\Repos\sars-cov-2\sars-cov-2\bin\Debug\sars-cov-2.pdb
+C:\Users\Ascensao\Source\Repos\sars-cov-2\sars-cov-2\obj\Debug\sars-cov-2.csproj.AssemblyReference.cache
+C:\Users\Ascensao\Source\Repos\sars-cov-2\sars-cov-2\obj\Debug\sars-cov-2.csproj.SuggestedBindingRedirects.cache
+C:\Users\Ascensao\Source\Repos\sars-cov-2\sars-cov-2\obj\Debug\sars-cov-2.csproj.CoreCompileInputs.cache
+C:\Users\Ascensao\Source\Repos\sars-cov-2\sars-cov-2\obj\Debug\sars-cov-2.exe
+C:\Users\Ascensao\Source\Repos\sars-cov-2\sars-cov-2\obj\Debug\sars-cov-2.pdb

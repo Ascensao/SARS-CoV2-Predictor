@@ -1,10 +1,10 @@
-# SARS-CoV-2.exe
+# SARS-CoV2-Predictor
 
 <p align="center">
   <img width="380" height="380" src="https://github.com/Ascensao/sars-cov-2/blob/master/sars-cov-2.png">
 </p>
 
-SARS-CoV-2 is a .NET statistical analysis Console Application with the same name of the pandemic virus. This console application can predict with great accuracy the spread of the Covid-19 in the next followed days. This information is calculated through the historical analysis of the recently infected people of each country.
+SARS-CoV2-Predictor is a .NET statistical analysis console application designed to predict the potential spread of the Covid-19 pandemic. Leveraging historical data analysis of recent infections by country, this application provides a high degree of accuracy in its predictions for upcoming days. By providing an understanding of future Covid-19 spread, SARS-CoV2-Predictor serves as a valuable tool for public health planning and response.
 
 ## Requirments
 * Windows 7 or 10 (32/64 bits)
